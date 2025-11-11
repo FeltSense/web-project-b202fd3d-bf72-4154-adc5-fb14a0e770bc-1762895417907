@@ -1,0 +1,84 @@
+{
+  "componentsToGenerate": [
+    "Navigation - Sticky header with practice area mega-menu dropdown",
+    "Hero - Full-width with overlay, professional imagery, headline, subheadline, consultation CTA",
+    "TrustBadges - Statistics bar (years, cases, satisfaction) with icons",
+    "PracticeAreasGrid - 6-card grid with icons, descriptions, and 'Learn More' links",
+    "FeaturedAttorneys - Card carousel with photos, names, titles, specialties",
+    "CaseResults - Testimonial cards with outcomes, practice area tags, client initials",
+    "ConsultationCTA - Prominent section with benefits list and booking button",
+    "BlogPreview - 3-article grid with featured image, title, excerpt, author",
+    "ConsultationForm - Multi-step booking: personal info, case details, scheduling, confirmation",
+    "AttorneyProfile - Detailed card with headshot, bio, education, bar admissions, notable cases",
+    "PracticeAreaDetail - Hero, description, approach, case examples, relevant attorneys, CTA",
+    "ContactForm - Comprehensive intake with validation for name, email, phone, case type, urgency",
+    "PricingCards - Tiered pricing display for consultations and packages with feature lists",
+    "BlogList - Article grid with filtering by category and search functionality",
+    "Footer - Multi-column with practice areas, quick links, contact info, social, disclaimers"
+  ],
+  "estimatedChallenges": [
+    {
+      "component": "Navigation",
+      "challenge": "Mega-menu dropdown for practice areas with proper mobile behavior",
+      "mitigation": "Use state management for dropdown toggle, responsive hamburger menu for mobile with accordion-style practice areas"
+    },
+    {
+      "component": "ConsultationForm",
+      "challenge": "Multi-step form state management and validation across steps",
+      "mitigation": "Use React state for form data, validate each step before proceeding, show progress indicator"
+    },
+    {
+      "component": "AttorneyProfile",
+      "challenge": "Complex data structure with education, bar admissions, cases arrays",
+      "mitigation": "Define clear TypeScript interface, use map() for arrays with proper keys, handle optional fields gracefully"
+    },
+    {
+      "component": "PracticeAreaDetail",
+      "challenge": "Dynamic content for 6 different practice areas",
+      "mitigation": "Create reusable component with props for area-specific content, use consistent structure across all areas"
+    },
+    {
+      "component": "CaseResults",
+      "challenge": "Displaying outcomes while respecting confidentiality",
+      "mitigation": "Use client initials, general outcome descriptions, practice area tags without identifying details"
+    },
+    {
+      "component": "ContactForm",
+      "challenge": "Complex validation for legal inquiry form with multiple field types",
+      "mitigation": "Implement field-by-field validation, clear error messages, use proper HTML5 input types"
+    },
+    {
+      "component": "PricingCards",
+      "challenge": "Presenting various pricing structures (hourly, flat fee, retainer) clearly",
+      "mitigation": "Use card layout with clear labels, feature lists, and 'Starting at' language for flexibility"
+    },
+    {
+      "component": "BlogList",
+      "challenge": "Filtering and search functionality for articles",
+      "mitigation": "Implement client-side filtering with state, use search input to filter by title/content, category buttons"
+    }
+  ],
+  "fixerContext": {
+    "expectedStructure": "Simple Next.js app. Components in components/ folder at root. app/page.tsx imports from ../components/. Each page (home, reservation, about, services, contact, pricing, blog) imports shared components like Navigation and Footer, plus page-specific sections.",
+    "importPaths": "Use '../components/ComponentName' from app/page.tsx and other pages. All shared components (Navigation, Footer, ConsultationCTA) imported consistently across pages.",
+    "sharedStyling": "All components use consistent Tailwind classes with navy blue (blue-900), gold accents (yellow-600), and professional spacing. Typography uses serif for headings, sans-serif for body text.",
+    "commonIssues": [
+      "Missing 'use client' directive on interactive components (forms, dropdowns, carousels)",
+      "Import path mismatches between pages - ensure all use '../components/'",
+      "Form validation not implemented - add proper error states",
+      "Missing responsive classes - ensure mobile-first approach",
+      "Inconsistent color schemes across pages - use centralized color variables",
+      "Attorney profile arrays not mapped with proper keys",
+      "Mega-menu dropdown state not properly managed",
+      "Multi-step form losing state between steps",
+      "Missing TypeScript types for attorney and case result data",
+      "Footer practice area links not matching services page structure"
+    ],
+    "criticalForMultiPage": {
+      "navigation": "Navigation component must have ALL 7 pages linked: Home, Book Consultation, About, Practice Areas, Contact, Pricing, Legal Resources (Blog). Links must work across all pages.",
+      "designConsistency": "CRITICAL - All pages share: Navy blue primary color, gold accents, serif headings, sans-serif body, professional photo style, consultation CTA placement, footer structure.",
+      "contentCoherence": "Each page references others: Home features attorneys from About, Services practice areas link to relevant attorneys, Consultation booking mentions Pricing, Blog authors are attorneys from About.",
+      "brandVoice": "Authoritative yet approachable. Professional without being intimidating. Confident in expertise while emphasizing client care and accessibility."
+    }
+  }
+}
